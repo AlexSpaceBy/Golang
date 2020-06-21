@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en-US">
+ <head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8">
+   <title>Timetracker front page</title>
+  </head>
+ <div><span id="known-token"></span></div>
+  <style>
+  h1 {
+  border: 1px solid black;
+  padding: 10px;
+  }
+  .task {
+  display: inline-block;
+  }
+  .timeframe {
+  display: inline-block;
+  }
+  .outerscope {
+  display: block;
+  }
+  </style>
+  <h1 align="center"> This is a simple front page to connect with back end of timetracker. <br>
+	                  The page implements basic options according to the task.</h1>
+	<!-- This is a block for groups -->
+	<div class="outerscope">
+		<fieldset>
+		<form action="group_handler" method="post" target="_blank">
+			<label for="groups">Name of the group:</label>
+			<input type="text" id="groups" name="groups">
+			<input type="submit" id="post_button_group" name="post_button_group" value="POST Group">
+		</form>
+		</fieldset>
+	<br>
+	</div>
+	<!-- This is a block for tasks -->
+	<div class="outerscope">
+		<fieldset>
+		<form action="task_handler" method="post" target="_blank">
+			<div class="task">
+				<label for="task_id"> Name of the task:</label>
+				<input type="text" id="task_id" name="task_id">
+			</div>
+			<div class="task">
+				<label for="group_id">Name of the group:</label>
+				<input type="text" id="group_id" name="group_id">
+			</div>
+			<div class="task">
+				<input type="submit" id="post_button_task" name="post_button_task" value="POST Task">
+			</div>
+		</form>
+		</fieldset>
+	<br>
+	</div>
+	<!-- This is a block for timeframes -->
+	<div class="outerscope">
+		<fieldset>
+		<form action="timeframe_handler" method="post" target="_blank">
+			<div class="timeframe">
+				<label for="task_name">Name of the task:</label>
+				<input type="text" id="task_name" name="task_name">
+			</div>
+			<div class="timeframe">
+				<label for="start_time">Time of start(Day Mon Num Hr:Min:Sec Year):</label>
+				<input type="text" id="start_time" name="start_time">
+			</div>
+			<div class="timeframe">
+				<label for="stop_time">Time of end(Day Mon Num Hr:Min:Sec Year):</label>
+				<input type="text" id="time_stop" name="time_stop">
+			</div>
+			<input type="submit" id="post_button_timeframe" name="post_button_timeframe" value="POST Timeframe">
+		</form>
+		</fieldset>
+	<br>
+	</div>
+ 	<!-- This is a get groups -->
+ 	<div class="outerscope">
+		<fieldset>
+			<form action="group_getter" method="get" target="_blank">
+				<label for="get_groups">Get the groups:</label>
+				<input type="text" id="get_groups" name="get_groups">
+				<input type="submit" id="get_button_groups" name="get_button_groups" value="GET Groups">
+			</form>
+		</fieldset>
+		<br>
+ 	</div>
+ 	<!-- This is a get tasks -->
+ 	<div class="outerscope">
+		<fieldset>
+			<form action="task_getter" method="get" target="_blank">
+				<label for="get_tasks">Get the tasks:</label>
+				<input type="text" id="get_tasks" name="get_tasks">
+				<input type="submit" id="get_button_text" name="get_button_text" value="GET Tasks">
+			</form>
+		</fieldset>
+		<br>
+	</div>
+ 	<!-- This is a get timeframes -->
+ 	<div class="outerscope">
+		<fieldset>
+			<form action="timeframe_getter" method="get" target="_blank">
+				<label for="get_button_timeframes">Get the timeframes for convenience:</label>
+				<input type="submit" id="get_button_timeframes" name="get_button_timeframes" value="GET Timeframes">
+			</form>
+		</fieldset>
+		<br>
+	</div>
+ 	<!-- This is a delete timeframes -->
+ 	<div class="outerscope">
+		<fieldset>
+			<form action="timeframe_deleter" method="post" target="_blank">
+				<label for="del_timeframes">Delete timeframe by uuid:</label>
+				<input type="text" id="del_timeframes" name="del_timeframes">
+				<input type="submit" id="del_button_timeframes" name="del_button_timeframes" value="DELETE Timeframe">
+			</form>
+		</fieldset>
+		<br>
+	</div>
+ 	<!-- This is a delete tasks -->
+ 	<div class="outerscope">
+	 <fieldset>
+		 <form action="task_deleter" method="post" target="_blank">
+			 <label for="del_tasks">Delete task by name:</label>
+			 <input type="text" id="del_tasks" name="del_tasks">
+			 <input type="submit" id="del_button_tasks" name="del_button_tasks" value="DELETE Task">
+		 </form>
+	 </fieldset>
+	 <br>
+ 	</div>
+ 	<!-- This is a delete groups -->
+ 	<div class="outerscope">
+		<fieldset>
+			<form action="group_deleter" method="post" target="_blank">
+				<label for="del_groups">Delete group by name:</label>
+				<input type="text" id="del_groups" name="del_groups">
+				<input type="submit" id="del_button_groups" name="del_button_groups" value="DELETE Group">
+			</form>
+		</fieldset>
+	</div>
+ 	<br>
+ 	<!-- This is a put tasks -->
+ 	<div class="outerscope">
+		<fieldset>
+			<form action="task_putter" method="post" target="_blank">
+				<div class="task">
+					<label for="put_tasks">Task name:</label>
+					<input type="text" id="put_tasks" name="put_tasks">
+				</div>
+				<div class="task">
+					<label for="task_name_new">New task name:</label>
+					<input type="text" id="task_name_new" name="task_name_new">
+				</div>
+				<div class="task">
+					<label for="task_group_new">New group assignment:</label>
+					<input type="text" id="task_group_new" name="task_group_new">
+				</div>
+				<div class="task">
+					<label for="task_uuid_new">New task uuid:</label>
+					<input type="text" id="task_uuid_new" name="task_uuid_new">
+				</div>
+				<div class="task">
+					<input type="submit" id="put_button_task" name="put_button_task" value="PUT task">
+				</div>
+			</form>
+		</fieldset>
+	</div>
+ 	<br>
+ 	<!-- This is a put groups -->
+ 	<div class="outerscope">
+		<fieldset>
+			<form action="group_putter" method="post" target="_blank">
+				<div class="task">
+					<label for="put_groups">Group name:</label>
+					<input type="text" id="put_groups" name="put_groups">
+				</div>
+				<div class="task">
+					<label for="group_name_new">New group name:</label>
+					<input type="text" id="group_name_new" name="group_name_new">
+				</div>
+				<div class="task">
+					<label for="group_uuid_new">New group uuid:</label>
+					<input type="text" id="group_uuid_new" name="group_uuid_new">
+				</div>
+				<div class="task">
+					<input type="submit" id="put_button_group" name="put_button_group" value="PUT group">
+				</div>
+			</form>
+		</fieldset>
+	</div>
+  </body>
+</html>
